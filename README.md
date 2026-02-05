@@ -19,12 +19,17 @@ This application streamlines the management of basketball pick-up games by:
 
 ### 1. Team Configuration
 - Support for 3 - 8 teams per game group
+- Target point
+- Time limit
 - Easy team setup and management
 - Team roster tracking
 
 ### 2. Game Type Selection
-- **Type 1**: [Game format to be defined]
-- **Type 2**: [Game format to be defined]
+- **Type 1 - Single Leave (Time-Based)**: When game ends, default to leave 1 team.
+- **Type 2 - Double Leave (Point-Based)**: When game ends, default to leave both team.
+
+- **Type 1.1 - Single Leave**: When game ends with time runs out, default to leave 1 team.
+- **Type 1.2 - Double Leave**: When game ends with time runs out, default to leave 2 team.
 
 ### 3. Game Result Recording
 Track comprehensive game statistics:
@@ -41,16 +46,14 @@ Track comprehensive game statistics:
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm or yarn
-- React Native development environment
-- For iOS development:
-  - macOS
-  - Xcode
-  - CocoaPods
-- For Android development:
-  - Android Studio
-  - Android SDK
+- Node.js (v18 or higher recommended)
+- pnpm or yarn
+- Expo CLI
+- Expo Go app on your mobile device (for testing)
+- For production builds:
+  - EAS CLI (Expo Application Services)
+  - Apple Developer Account (for iOS)
+  - Google Play Developer Account (for Android)
 
 ### Installation
 
@@ -60,38 +63,68 @@ git clone <repository-url>
 cd competition-management
 
 # Install dependencies
-npm install
+pnpm install
 # or
 yarn install
 
-# iOS specific setup
-cd ios
-pod install
-cd ..
+# Install Expo CLI globally (if not already installed)
+pnpm add -g expo-cli
+# or
+npm install -g expo-cli
 ```
 
 ### Running the App
 
-#### iOS
+#### Development Mode (Recommended)
 ```bash
-# Run on iOS simulator
-npm run ios
+# Start Expo development server
+pnpm start
 # or
-yarn ios
+yarn start
+# or
+npx expo start
 
-# Run on specific iOS device
-npm run ios -- --device "Device Name"
+# Then scan the QR code with:
+# - Expo Go app (Android)
+# - Camera app (iOS)
 ```
 
-#### Android
-```bash
-# Run on Android emulator
-npm run android
-# or
-yarn android
+#### Platform-Specific Development Builds
 
-# Run on connected Android device
-npm run android -- --deviceId=<device-id>
+```bash
+# Run on iOS simulator (requires macOS)
+pnpm ios
+# or
+npx expo run:ios
+
+# Run on Android emulator
+pnpm android
+# or
+npx expo run:android
+
+# Run on web browser (for testing UI)
+pnpm web
+# or
+npx expo start --web
+```
+
+#### Production Builds with EAS
+
+```bash
+# Install EAS CLI
+pnpm add -g eas-cli
+
+# Configure EAS
+eas build:configure
+
+# Build for iOS
+eas build --platform ios
+
+# Build for Android
+eas build --platform android
+
+# Build for both platforms
+eas build --platform all
 ```
 
 ## 🏗️ Project Structure
@@ -130,12 +163,16 @@ The core logic for determining which team plays next will be implemented based o
 
 ## 🛠️ Technology Stack
 
-- **Framework**: React Native
+- **Framework**: React Native with Expo
 - **Language**: JavaScript/TypeScript
-- **State Management**: [To be determined - Redux, Context API, MobX, etc.]
-- **Navigation**: [To be determined - React Navigation, etc.]
-- **Storage**: [To be determined - AsyncStorage, SQLite, Realm, etc.]
-- **UI Components**: [To be determined - React Native Paper, Native Base, etc.]
+- **Development Platform**: Expo SDK
+- **Build Service**: EAS (Expo Application Services)
+- **State Management**: [To be determined - Redux Toolkit, Zustand, Context API, etc.]
+- **Navigation**: React Navigation (Expo recommended)
+- **Storage**: Expo SecureStore / AsyncStorage
+- **UI Components**: [To be determined - React Native Paper, NativeBase, Expo UI, etc.]
+- **Notifications**: Expo Notifications
+- **Testing**: Jest + React Native Testing Library
 
 ## 📱 App Screens
 
