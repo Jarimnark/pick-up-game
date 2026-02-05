@@ -1,6 +1,6 @@
 # Basketball Pick-Up Game Manager
 
-A React Native mobile application for managing basketball pick-up games with multiple teams. Track game results, manage team rotations, and determine which team plays next based on game outcomes.
+A React Native mobile application and zustand lib for managing basketball pick-up games with multiple teams. Track game results, manage team rotations, and determine which team plays next based on game outcomes.
 
 ## 📱 Platform Support
 
@@ -25,11 +25,11 @@ This application streamlines the management of basketball pick-up games by:
 - Team roster tracking
 
 ### 2. Game Type Selection
-- **Type 1 - Single Leave (Time-Based)**: When game ends, default to leave 1 team.
-- **Type 2 - Double Leave (Point-Based)**: When game ends, default to leave both team.
-
+- **Type 1 - Single Leave**: When game ends, default to leave 1 team.
 - **Type 1.1 - Single Leave**: When game ends with time runs out, default to leave 1 team.
 - **Type 1.2 - Double Leave**: When game ends with time runs out, default to leave 2 team.
+- **Type 2 - Double Leave**: When game ends, default to leave both team.
+
 
 ### 3. Game Result Recording
 Track comprehensive game statistics:
@@ -59,8 +59,8 @@ Track comprehensive game statistics:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd competition-management
+git clone https://github.com/Jarimnark/pick-up-game.git
+cd pick-up-game
 
 # Install dependencies
 pnpm install
